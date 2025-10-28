@@ -16,39 +16,39 @@
 }
 
 .crimson-text-regular {
-  font-family: "Crimson Text", serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Crimson Text", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .crimson-text-semibold {
-  font-family: "Crimson Text", serif;
-  font-weight: 600;
-  font-style: normal;
+    font-family: "Crimson Text", serif;
+    font-weight: 600;
+    font-style: normal;
 }
 
 .crimson-text-bold {
-  font-family: "Crimson Text", serif;
-  font-weight: 700;
-  font-style: normal;
+    font-family: "Crimson Text", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .crimson-text-regular-italic {
-  font-family: "Crimson Text", serif;
-  font-weight: 400;
-  font-style: italic;
+    font-family: "Crimson Text", serif;
+    font-weight: 400;
+    font-style: italic;
 }
 
 .crimson-text-semibold-italic {
-  font-family: "Crimson Text", serif;
-  font-weight: 600;
-  font-style: italic;
+    font-family: "Crimson Text", serif;
+    font-weight: 600;
+    font-style: italic;
 }
 
 .crimson-text-bold-italic {
-  font-family: "Crimson Text", serif;
-  font-weight: 700;
-  font-style: italic;
+    font-family: "Crimson Text", serif;
+    font-weight: 700;
+    font-style: italic;
 }
 
 
@@ -94,7 +94,8 @@ h3 {
     margin: 1rem 0rem;
 }
 
-p, ul{
+p,
+ul {
     font-family: 'Neue Haas Grotesk';
     letter-spacing: 0.05rem;
 }
@@ -289,8 +290,10 @@ h1 {
 #about span {
     font-weight: 600;
 }
+
 #main a {
     text-decoration: none;
+    color: var(--text)
 }
 
 #main a:hover {
@@ -369,21 +372,21 @@ h1 {
 }
 
 #header-name {
-  position: absolute;
-  left: 50%;
-  top: 60%;
-  transform: translate(-50%, -50%);
-  font-size: 1.5rem;
-  text-align: center;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    text-align: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 #header-name.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 /* Theme toggle inside header */
@@ -421,56 +424,55 @@ h1 {
 
 /* === Projects === */
 #projects {
-  width: 60vw;
-  margin: auto;
-  padding-top: 2rem;
-  line-height: 1.7;
-  align-items: flex-start;
-  margin-top: 3rem;
+    width: 60vw;
+    margin: auto;
+    padding-top: 2rem;
+    line-height: 1.7;
+    align-items: flex-start;
 }
 
 #projects h2 {
-  font-family: 'Ovo', serif;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: left;
-  color: var(--h1);
+    font-family: 'Crimson text';
+    font-size: 2rem;
+    margin: 2rem 0rem 0.5rem;
+    text-align: left;
+    color: var(--h1);
 }
 
 .project {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .project h3 {
-  font-size: 1.3rem;
-  color: var(--text);
-  font-weight: 600;
-  margin-bottom: 0.4rem;
+    font-size: 1.3rem;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
 }
 
 .project .meta {
-  font-size: 0.95rem;
-  font-style: italic;
-  opacity: 0.7;
-  margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    font-style: italic;
+    opacity: 0.7;
+    margin-bottom: 0.8rem;
 }
 
 .project ul {
-  list-style: none;
-  padding-left: 0;
+    list-style: none;
+    padding-left: 0;
 }
 
 .project li {
-  position: relative;
-  margin-bottom: 0.6rem;
-  padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+    padding-left: 1.2rem;
 }
 
 .project li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
 }
 
 /* === Cursor === */
