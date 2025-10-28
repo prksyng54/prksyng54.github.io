@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selina Park</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Ovo&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="cursor"></div>
+
+    <!-- header -->
+    <header id="site-header">
+        <button id="theme-toggle" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <h1 id="header-name">Selina Park</h1>
+        <nav id="socials">
+            <a href="https://linkedin.com/in/selinasyp" target="_blank" class="icon linkedin"><i
+                    class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/prksyng54" target="_blank" class="icon github"><i class="fab fa-github"></i></a>
+            <a href="mailto:p.selina@columbia.edu" class="icon email"><i class="fa-solid fa-envelope"></i></a>
+        </nav>
+    </header>
+
+    <!-- SINGLE Progress Sidebar -->
+    <nav id="progress-bar">
+        <div class="progress-track">
+            <div class="progress-dot active" data-label=""></div>
+            <div class="progress-dot" data-label="Intro"></div>
+            <div class="progress-dot" data-label="Projects"></div>
+        </div>
+    </nav>
+
+    <!-- === SECTIONS === -->
+    <section id="intro" class="active">
+        <div>
+            <h1 id="typing"></h1>
+            <h2 class="tagline">Data Scientist & Machine Learning Engineer | Healthcare Intelligence</h2>
+        </div>
+        <div class="scroll-indicator">scroll to explore ↓</div>
+    </section>
+
+    <section id="main">
+        <div id="degree">
+            <h3>Education</h3>
+            <div>
+                <p>M.S. in Data Science, Columbia University</p>
+                <p>08/2025 - Present</p>
+            </div>
+            <div>
+                <p>B.S. in Computer Science, Washington University in St. Louis</p>
+                <p>05/2025</p>
+            </div>
+        </div>
+        <div id="about">
+            <h3>About Me</h3>
+            <p>I build <span>machine learning tools</span> that trasfrom data into <span>personal health
+                    intelligence</span></p>
+            <p>Previously, I worked as a <span>Machine Learning Engineer</span> at a <a href="https://cervmonitor.com/"
+                    target="_blank">healthtech startup</a>, where I built models for real-world clinical impact.</p>
+            <p>I grew up in South Korea and Thailand and now live in New York City. I’m currently exploring how to
+                transform data into personal health intelligence.</p>
+            <p>When I’m not coding, I’m journaling, learning new languages, or diving into philosophy and self-growth
+                books. I also love yoga, pilates, and all things wellness.</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Selected Projects</h2>
+
+        <div class="project">
+            <h3>Wearable Health Behavior Feedback System</h3>
+            <p class="meta">Project Lead · St. Louis, MO · May 2025 – Aug 2025</p>
+            <ul>
+                <li>Created a personalized health feedback system integrating wearable data, generating daily behavior
+                    recommendations through prompt engineering.</li>
+                <li>Implemented an anomaly detection module using Z-score thresholds to highlight potential health
+                    risks, improving user engagement with actionable insights.</li>
+                <li>Designed and deployed an interactive visualization dashboard with Streamlit, exploring integration
+                    pathways to React/Node.js and Postgres for production readiness.</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <h3>Predictive Modeling for Spinal Rod Breakage Risk</h3>
+            <p class="meta">Software Lead · St. Louis, MO · Jan 2025 – Apr 2025</p>
+            <ul>
+                <li>Built a Random Forest predictive model using preoperative clinical data from 527 patients with 150+
+                    features to assess spinal rod breakage risk, applying SMOTE + Tomek resampling to address severe
+                    class imbalance.</li>
+                <li>Achieved 40% precision and 30% recall in detecting rare rod breakage cases, providing clinically
+                    actionable insights for spinal reconstruction decision-making.</li>
+                <li>Developed an interactive physician-facing web module using mutual-information–selected features for
+                    real-time risk prediction.</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <script>
+
+        /* --- Progress Dots Scroll Logic --- */
+        const dots = document.querySelectorAll(".progress-dot");
+        const sections = ["intro", "main", "projects"];
+        let currentSection = 0;
+
+        function revealDots(upToIndex) {
+            dots.forEach((dot, idx) => {
+                if (idx <= upToIndex) dot.classList.add("visible");
+                else dot.classList.remove("visible", "active");
+            });
+        }
+
+        function setActiveDot(index) {
+            dots.forEach(dot => dot.classList.remove("active"));
+            dots[index].classList.add("active");
+        }
+
+        function goToSection(index) {
+            if (index === currentSection) return;
+            const from = sections[currentSection];
+            const to = sections[index];
+            const fromEl = document.getElementById(from);
+            const toEl = document.getElementById(to);
+
+            fromEl.classList.remove("active");
+            fromEl.classList.add("fade-out");
+            setTimeout(() => {
+                fromEl.style.display = "none";
+                toEl.style.display = "flex";
+                toEl.classList.remove("fade-out");
+                toEl.classList.add("fade-in", "active");
+            }, 700);
+
+            currentSection = index;
+            revealDots(index);
+            setActiveDot(index);
+
+            const headerName = document.getElementById("header-name");
+            if (sections[index] === "intro") {
+                headerName.classList.add("hidden");
+            } else {
+                headerName.classList.remove("hidden");
+            }
+
+        }
+
+
+        let isTransitioning = false;
+        window.addEventListener("wheel", (e) => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            if (e.deltaY > 0 && currentSection < sections.length - 1) {
+                goToSection(currentSection + 1);
+            } else if (e.deltaY < 0 && currentSection > 0) {
+                goToSection(currentSection - 1);
+            }
+
+            setTimeout(() => (isTransitioning = false), 1000);
+
+            if (currentSection > 0) {
+                document.body.classList.add("scrolled");
+            } else {
+                document.body.classList.remove("scrolled");
+            }
+        });
+
+        revealDots(0);
+        setActiveDot(0);
+        window.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("header-name").classList.add("hidden");
+        });
+
+        /* --- Theme toggle --- */
+        const toggle = document.getElementById("theme-toggle");
+        const icon = toggle.querySelector("i");
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        icon.classList.toggle("fa-sun", savedTheme === "dark");
+        icon.classList.toggle("fa-moon", savedTheme !== "dark");
+
+        toggle.addEventListener("click", () => {
+            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+            const newTheme = isDark ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+
+            icon.style.opacity = 0;
+            setTimeout(() => {
+                icon.classList.toggle("fa-moon", newTheme === "light");
+                icon.classList.toggle("fa-sun", newTheme === "dark");
+                icon.style.opacity = 1;
+            }, 200);
+        });
+
+        /* --- Cursor --- */
+        const cursor = document.querySelector(".cursor");
+        document.addEventListener("mousemove", (e) => {
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+        });
+
+        // Change cursor shape when hovering over links
+        document.querySelectorAll("a").forEach(link => {
+            link.addEventListener("mouseenter", () => {
+                cursor.classList.add("link-hover");
+            });
+            link.addEventListener("mouseleave", () => {
+                cursor.classList.remove("link-hover");
+            });
+        });
+
+        /* --- Typing effect for intro --- */
+        /* --- Typing effect for intro (multilingual version) --- */
+        const typingEl = document.getElementById("typing");
+        const texts = ["Selina Park ",
+            "박서영 ",
+            "朴书永 ",
+            "พัก ซอยอง "];
+
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentText = texts[textIndex];
+            const speed = isDeleting ? 60 : 150; // typing vs deleting speed
+
+            typingEl.textContent = currentText.substring(0, charIndex);
+
+            if (!isDeleting && charIndex < currentText.length) {
+                charIndex++;
+            } else if (isDeleting && charIndex > 0) {
+                charIndex--;
+            }
+
+            // When a word is done typing
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 2000); // pause before deleting
+                return;
+            }
+
+            // When word is deleted, move to next language
+            if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        typeEffect();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,530 @@
+/* === FONTS === */
+@font-face {
+    font-family: 'Neue Haas Grotesk';
+    src: url('/font/neue-haas-grotesk-display-pro-cufonfonts/NeueHaasDisplayLight.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neue Haas Grotesk';
+    src: url('/font/neue-haas-grotesk-display-pro-cufonfonts/NeueHaasDisplayBold.ttf') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+.crimson-text-regular {
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.crimson-text-semibold {
+  font-family: "Crimson Text", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.crimson-text-bold {
+  font-family: "Crimson Text", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.crimson-text-regular-italic {
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.crimson-text-semibold-italic {
+  font-family: "Crimson Text", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.crimson-text-bold-italic {
+  font-family: "Crimson Text", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+:root {
+    --bg: #F3E9DD;
+    --text: #533A33;
+    --accent: #97051D;
+    --h1: #533A33;
+    --cursor: #97051D;
+}
+
+[data-theme="dark"] {
+    --bg: #1A1816;
+    --text: #B0D2EC;
+    --accent: #f3e9dd;
+    --h1: #B0D2EC;
+    --cursor: #F3E9DD;
+}
+
+/* === Reset === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    cursor: none;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    /* hides scrollbar */
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Neue Haas Grotesk', sans-serif;
+    cursor: none;
+}
+
+h3 {
+    font-family: "Crimson Text", "serif";
+    font-size: 1.5rem;
+    margin: 1rem 0rem;
+}
+
+p, ul{
+    font-family: 'Neue Haas Grotesk';
+    letter-spacing: 0.05rem;
+}
+
+/* === Socials BAR === */
+#socials {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    color: var(--text);
+}
+
+#socials i {
+    transition: transform 0.25s ease, color 0.3s ease;
+    font-size: 1.2rem;
+    color: var(--text);
+    padding: 0.4rem;
+}
+
+
+#socials i:hover {
+    transform: translateY(-6px) rotate(-2deg);
+    color: var(--accent);
+}
+
+
+/* === PROGRESS BAR === */
+#progress-bar {
+    position: fixed;
+    top: 50%;
+    right: 3rem;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    z-index: 999;
+}
+
+.progress-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.progress-dot {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.7s ease;
+}
+
+.progress-dot.visible {
+    opacity: 0.5;
+    transform: scale(1);
+}
+
+.progress-dot.active {
+    background: var(--text);
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+.progress-dot::after {
+    content: attr(data-label);
+    position: absolute;
+    right: 1.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    opacity: 0;
+    color: var(--text);
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.progress-dot.visible::after {
+    opacity: 0.4;
+}
+
+.progress-dot.active::after {
+    opacity: 1;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    #progress-bar {
+        right: 1rem;
+    }
+}
+
+/* === Sections === */
+section {
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition:
+        opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1),
+        transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: opacity, transform;
+}
+
+section.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+section.fade-out {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+}
+
+
+/* === Typography === */
+h1 {
+    font-family: '"Crimson Text", serif', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--h1);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05rem;
+}
+
+#typing {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 6px;
+    /* gives breathing room for the cursor */
+    border-right: 2.5px solid var(--h1);
+    line-height: 1.2em;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 600;
+    animation: blink 0.8s steps(1) infinite;
+    vertical-align: bottom;
+    /* keeps baseline aligned with text */
+    min-height: 1.2em;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.tagline {
+    font-family: 'Neue Haas Grotesk';
+    font-weight: normal;
+    font-size: 1.1rem;
+    color: rgba(83, 58, 51, 0.75);
+    max-width: 50ch;
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .tagline {
+    color: #B0D2EC;
+}
+
+/* === About === */
+#main {
+    width: 55vw;
+    margin: auto;
+    align-items: stretch;
+}
+
+#main div {
+    margin: 1rem 0rem;
+}
+
+#main p {
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+#about p {
+    margin: 1.5rem 0;
+    line-height: 1.8;
+    font-size: 1.2rem;
+}
+
+#about span {
+    font-weight: 600;
+}
+#main a {
+    text-decoration: none;
+}
+
+#main a:hover {
+    text-decoration: underline;
+}
+
+#main a:visited {
+    color: var(--text);
+}
+
+#degree div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* === Scroll indicator === */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    opacity: 0.6;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, 8px);
+    }
+}
+
+
+
+/* === Theme toggle === */
+#theme-toggle {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+    color: var(--accent);
+}
+
+
+/* === HEADER === */
+#site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#header-name {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  text-align: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#header-name.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Theme toggle inside header */
+#site-header #theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#site-header #theme-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+    color: var(--accent);
+}
+
+/* Social icons in header */
+#site-header #socials {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+#site-header #socials i {
+    font-size: 1.1rem;
+    color: var(--text);
+    transition: transform 0.25s ease, color 0.3s ease;
+}
+
+#site-header #socials i:hover {
+    transform: translateY(-4px);
+    color: var(--accent);
+}
+
+/* === Projects === */
+#projects {
+  width: 60vw;
+  margin: auto;
+  padding-top: 2rem;
+  line-height: 1.7;
+  align-items: flex-start;
+  margin-top: 3rem;
+}
+
+#projects h2 {
+  font-family: 'Ovo', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  color: var(--h1);
+}
+
+.project {
+  margin-bottom: 1rem;
+}
+
+.project h3 {
+  font-size: 1.3rem;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.project .meta {
+  font-size: 0.95rem;
+  font-style: italic;
+  opacity: 0.7;
+  margin-bottom: 0.8rem;
+}
+
+.project ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.project li {
+  position: relative;
+  margin-bottom: 0.6rem;
+  padding-left: 1.2rem;
+}
+
+.project li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* === Cursor === */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--cursor);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: transform 0.1s ease-out, border-color 0.25s ease;
+}
+
+a:hover~.cursor,
+.cursor.link-hover {
+    width: 18px;
+    height: 18px;
+    border: none;
+    background: none;
+    position: fixed;
+}
+
+.cursor.link-hover::before,
+.cursor.link-hover::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 2px;
+    background: var(--cursor);
+    transform-origin: center;
+}
+
+.cursor.link-hover::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cursor.link-hover::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+    section {
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 2.6rem;
+    }
+}
