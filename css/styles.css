@@ -504,8 +504,8 @@ h1 {
 #projects {
     width: 60vw;
     margin: auto;
-    padding-top: 2rem;
-    line-height: 1.7;
+    padding-top: 3rem;
+    line-height: 1.5;
     align-items: flex-start;
 }
 
