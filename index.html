@@ -39,7 +39,9 @@
         <div class="progress-track">
             <div class="progress-dot active" data-label=""></div>
             <div class="progress-dot" data-label="Intro"></div>
+            <div class="progress-dot" data-label="Skills"></div>
             <div class="progress-dot" data-label="Projects"></div>
+            <div class="progress-dot" data-label="Contact"></div>
         </div>
     </nav>
 
@@ -54,7 +56,7 @@
 
     <section id="main">
         <div id="degree">
-            <h3>Education</h3>
+            <h2>Education</h2>
             <div>
                 <p>M.S. in Data Science, Columbia University</p>
                 <p>08/2025 - Present</p>
@@ -65,10 +67,10 @@
             </div>
         </div>
         <div id="about">
-            <h3>About Me</h3>
-            <p>I build <span>machine learning tools</span> that trasfrom data into <span>personal health
+            <h2>About Me</h2>
+            <p>I build <span>predictive tools</span> that trasfrom data into <span>personal health
                     intelligence</span>.</p>
-            <p>Previously, I worked as a <span>Machine Learning Engineer</span> at a <a href="https://cervmonitor.com/"
+            <p>Previously, I worked as a <span>machine learning engineer</span> at a <a href="https://cervmonitor.com/"
                     target="_blank">healthtech startup</a>, where I built models for real-world clinical impact.</p>
             <p>I grew up in South Korea and Thailand and now live in New York City. I’m currently exploring how to
                 transform data into personal health intelligence.</p>
@@ -77,34 +79,99 @@
         </div>
     </section>
 
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+
+            <div class="skill-category">
+                <h3>Programming & Development</h3>
+                <p>Python, Java, C++, R, JavaScript, PHP, MATLAB, HTML/CSS, Node.js, Express.js, React</p>
+            </div>
+
+            <div class="skill-category">
+                <h3>AI / ML / Data</h3>
+                <p>PyTorch, TensorFlow, Keras, scikit-learn, NumPy, pandas, MySQL, MongoDB, MariaDB, AWS</p>
+            </div>
+
+            <div class="skill-category">
+                <h3>Visualization & Signal Processing</h3>
+                <p>Arduino, Blender, Pure Data</p>
+            </div>
+
+        </div>
+    </section>
+
+
+
     <section id="projects">
         <h2>Selected Projects</h2>
+        <div class="project-info">
+            <p style="font-size: 0.85rem; font-style: italic"> Due to the use of confidential patient data, these
+                projects cannot be publicly
+                shared.
+                For more information, please feel free to contact me
+            </p>
+        </div>
 
         <div class="project">
-            <h3>Wearable Health Behavior Feedback System</h3>
-            <p class="meta">Project Lead · St. Louis, MO · May 2025 – Aug 2025</p>
+            <div class="project-info">
+                <h3>Wearable Health Behavior Feedback System</h3>
+                <p>05/2025 – 08/2025</p>
+            </div>
+            <div class="project-info last">
+                <p>Project Lead</p>
+                <p>St. Louis, MO</p>
+            </div>
             <ul>
                 <li>Created a personalized health feedback system integrating wearable data, generating daily behavior
-                    recommendations through prompt engineering.</li>
+                    recommendations through prompt engineering</li>
                 <li>Implemented an anomaly detection module using Z-score thresholds to highlight potential health
-                    risks, improving user engagement with actionable insights.</li>
+                    risks, improving user engagement with actionable insights</li>
                 <li>Designed and deployed an interactive visualization dashboard with Streamlit, exploring integration
-                    pathways to React/Node.js and Postgres for production readiness.</li>
+                    pathways to React/Node.js and Postgres for production readiness</li>
             </ul>
         </div>
 
         <div class="project">
-            <h3>Predictive Modeling for Spinal Rod Breakage Risk</h3>
-            <p class="meta">Software Lead · St. Louis, MO · Jan 2025 – Apr 2025</p>
+            <div class="project-info">
+                <h3>Predictive Modeling for Spinal Rod Breakage Risk</h3>
+                <p>01/2025 – 04/2025</p>
+            </div>
+            <div class="project-info last">
+                <p>Software Lead</p>
+                <p>St. Louis, MO</p>
+            </div>
             <ul>
                 <li>Built a Random Forest predictive model using preoperative clinical data from 527 patients with 150+
                     features to assess spinal rod breakage risk, applying SMOTE + Tomek resampling to address severe
-                    class imbalance.</li>
+                    class imbalance</li>
                 <li>Achieved 40% precision and 30% recall in detecting rare rod breakage cases, providing clinically
-                    actionable insights for spinal reconstruction decision-making.</li>
+                    actionable insights for spinal reconstruction decision-making</li>
                 <li>Developed an interactive physician-facing web module using mutual-information–selected features for
-                    real-time risk prediction.</li>
+                    real-time risk prediction</li>
             </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div>
+            <h2>Get in Touch</h2>
+            <div class="contact-icons">
+                <a href="https://linkedin.com/in/selinasyp" target="_blank" class="icon linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/prksyng54" target="_blank" class="icon github">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:p.selina@columbia.edu" class="icon email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="credits">
+            <p>Designed and Created by Selina Park</p>
+            <p>Last edited 08/28/25</p>
         </div>
     </section>
 
@@ -113,7 +180,7 @@
 
         /* --- Progress Dots Scroll Logic --- */
         const dots = document.querySelectorAll(".progress-dot");
-        const sections = ["intro", "main", "projects"];
+        const sections = ["intro", "main", "skills", "projects", "contact"];
         let currentSection = 0;
 
         function revealDots(upToIndex) {
@@ -153,6 +220,12 @@
                 headerName.classList.add("hidden");
             } else {
                 headerName.classList.remove("hidden");
+            }
+
+            if (sections[index] === "contact") {
+                document.body.classList.add("contact-active");
+            } else {
+                document.body.classList.remove("contact-active");
             }
 
         }
